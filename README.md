@@ -1,2 +1,2 @@
 # SQL
-My first SQL file of the Java boot camp
+SQL repos from 2018 Spring Boot camp
