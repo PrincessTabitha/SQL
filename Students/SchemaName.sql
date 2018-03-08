@@ -6,16 +6,17 @@ USE Students;
 CREATE TABLE Course (
   ID      INT            PRIMARY KEY  AUTO_INCREMENT,
   Name          VARCHAR(25)   NOT NULL
+ 
 
 );
 
-INSERT  INTO Course (Name) VALUES
+INSERT  INTO Course (ID, Name) VALUES
 
-('HTML'),
-('CSS3'),
-('JavaScript'),
-('PHP'),
-('MySQL');
+(1, 'HTML'),
+(2,'CSS3'),
+(3,'JavaScript'),
+(4,'PHP'),
+(5, 'MySQL');
 
 -- create the Product table
 CREATE TABLE User (
