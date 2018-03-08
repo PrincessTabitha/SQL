@@ -27,7 +27,7 @@ ID      INT            PRIMARY KEY  AUTO_INCREMENT,
 INVOICEID		INT  NOT NULL,
   Foreign key (INVOICEID) REFERENCES INVOICE (ID),
 PRODUCTID	INT  NOT NULL,
-  Foreign key (PRODUCTID) REFERENCES PRODUCT (ID),
+  Foreign key (invoiceID) REFERENCES PRODUCT (ID),
 Quantity INT NOT NULL
 );
 
@@ -39,9 +39,16 @@ INSERT INTO Product VALUES
 (4, 'android', 'Murach''s Android Programming', '57.50'),
 (5, 'html5', 'Murach''s HTML5 and CSS3', '54.50'),
 (6, 'oracle', 'Murach''s Oracle and PL/SQL', '54.50'),
-(7, 'javascript', 'Murach''s JavaScript and jQuery', '54.50'),
+(7, 'javascript', 'Murach''s JavaScript and jQuery', '57.50'),
 (8, 'test', 'test description', '20.00');
 
+-- insert some test data for invoice and line item, based on products above
+INSERT INTO Invoice VALUES
+(1, 'SB0001', 'Sean Blessing', '2018-03-08', 0);
+
+INSERT INTO LineItem VALUES
+(1, 1, 7, 5),
+(2, 1, 5, 10);
 -- create a user and grant privileges to that user
 GRANT SELECT, INSERT, DELETE, UPDATE
 ON mma.*
