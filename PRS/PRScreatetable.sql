@@ -74,8 +74,8 @@ VendorID	INT   NOT NULL,
 PartNumber VARCHAR(50)   NOT NULL,
 Name	 VARCHAR(150)   NOT NULL,
 Price   Decimal(10,2)  NOT NULL,
-Unit	VARCHAR(255)   NOT NULL,
-PhotoPath	VARCHAR(255)  ,
+Unit	VARCHAR(255),
+PhotoPath	VARCHAR(255),
 IsActive	BIT(1)   DEFAULT 1	NOT NULL,
 DateCreated	DATETIME DEFAULT CURRENT_TIMESTAMP	NOT NULL,
 DateUpdate	DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP	NOT NULL,
@@ -96,24 +96,26 @@ UpdatedByUser	INT DEFAULT 1	NOT NULL
 
 -- insert users
 
-INSERT INTO `user` VALUES 
-(1,'SYSTEM','xxxxx','System','System','XXX-XXX-XXXX','system@test.com','\0','\0','','2017-09-26 11:13:47','2017-09-26 11:13:47',1),
-(2,'sblessing','login','Sean','Blessing','513-600-7096','sean@blessingtechnology.com','','','','2017-09-28 16:35:33','2017-09-28 16:35:33',1);
+-- insert users
+INSERT INTO user (ID, UserName, Password, FirstName, LastName, Phone, Email, IsReviewer, IsAdmin) VALUES 
+(1,'SYSTEM','xxxxx','System','System','XXX-XXX-XXXX','system@test.com','\0','\0'),
+(2,'sblessing','login','Sean','Blessing','513-600-7096','sean@blessingtechnology.com','','');
 
 -- insert core status values
-INSERT INTO `status` VALUES 
-(1,'New','','2017-09-29 12:33:39','2017-09-29 12:33:39',1),
-(2,'Approved','','2017-09-29 12:33:39','2017-09-29 12:33:39',1),
-(3,'Rejected','','2017-09-29 12:33:39','2017-09-29 12:33:39',1),
-(4,'Review','','2017-12-16 11:39:08','2017-12-16 11:44:06',1);
+INSERT INTO status (ID, Description) VALUES 
+(1,'New'),
+(2,'Approved'),
+(3,'Rejected'),
+(4,'Review');
 
 -- insert vendors
-INSERT INTO `vendor` VALUES 
-(1,'BB-1001','Best Buy','100 Best Buy Street','Louisville','KY','40207','502-111-9099','geeksquad@bestbuy.com','\0','','2017-09-26 11:13:47','2017-09-26 11:13:47',1),
-(2,'AP-1001','Apple Inc','1 Infinite Loop','Cupertino','CA','95014','800-123-4567','genius@apple.com','\0','','2017-09-26 11:13:47','2017-09-26 11:13:47',1),
-(3,'AM-1001','Amazon','410 Terry Ave. North','Seattle','WA','98109','206-266-1000','amazon@amazon.com','','','2017-09-26 11:13:47','2017-09-26 11:13:47',1),
-(4,'ST-1001','Staples','9550 Mason Montgomery Rd','Mason','OH','45040','513-754-0235','support@orders.staples.com','','','2017-09-26 11:13:47','2017-09-26 11:13:47',1),
-(5,'MC-1001','Micro Center','11755 Mosteller Rd','Sharonville','OH','45241','513-782-8500','support@microcenter.com','','','2017-09-26 11:13:47','2017-09-26 11:13:47',1);
+INSERT INTO `vendor` (ID, Code, Name, Address, City, State, Zip, Phone, Email, isPreApproved) 
+VALUES 
+(1,'BB-1001','Best Buy','100 Best Buy Street','Louisville','KY','40207','502-111-9099','geeksquad@bestbuy.com',1),
+(2,'AP-1001','Apple Inc','1 Infinite Loop','Cupertino','CA','95014','800-123-4567','genius@apple.com',0),
+(3,'AM-1001','Amazon','410 Terry Ave. North','Seattle','WA','98109','206-266-1000','amazon@amazon.com',1),
+(4,'ST-1001','Staples','9550 Mason Montgomery Rd','Mason','OH','45040','513-754-0235','support@orders.staples.com',1),
+(5,'MC-1001','Micro Center','11755 Mosteller Rd','Sharonville','OH','45241','513-782-8500','support@microcenter.com',1);
 
 -- insert base products
 INSERT INTO `product` (`ID`,`VendorID`,`PartNumber`,`Name`,`Price`,`Unit`,`PhotoPath`) VALUES (1,1,'ME280LL','iPad Mini 2',296.99,NULL,NULL);
