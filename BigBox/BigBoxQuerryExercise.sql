@@ -1,4 +1,4 @@
--- 1) Store sales for Division 11...  join the tables to bring back 1 row and display the sales summary for division 11
+-- 1) Store sales for Division 1...  join the tables to bring back 1 row and display the sales summary for division 11
 select * 
 from division, store, storeSales
 where DivisionNumber= '001'
@@ -12,8 +12,16 @@ and division.id=store.DivisionID
 and storeSales.StoreID=store.ID;
 -- sum(storesales.sales) gives us sum of all sales, return one row
 
+-- Store sales summary for all divisions...  2 rows with the sales summed for each division.
+select DivisionNumber, concat('$', format((storesales.sales),2)) as 'Sales'
+from division, store, storesales
+where Division.ID=Store.DivisionID
+and Store.ID=StoreSales.StoreID
+group by division.divisionname;
+
 -- how if you want only uniquestore numbers?
 Select distinct (storenumber) FROM bigbox.store;
+
 -- how many store number are duplicates
 Select store number
 from store
